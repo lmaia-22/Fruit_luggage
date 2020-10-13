@@ -1,0 +1,59 @@
+
+/****** Object:  StoredProcedure [dbo].[getMapaAssiduidade]    Script Date: 18-06-2020 15:26:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/* Após 2010-11-23 */
+ALTER PROCEDURE [dbo].[getMapaAssiduidade] 
+@strFiltroAnoMesInicio varchar(7),
+@strFiltroAnoMesFim varchar(7),
+@intIdFuncionario int
+AS
+BEGIN
+       DECLARE @strQuerySQL varchar(6000);       
+       SET @strQuerySQL = 'SELECT a.idfuncionario, a.ano, a.mes, a.semana, a.dia, a.entrada, a.saida, a.total_horas, ISNULL(b.total_horas, 0) horas0, b.tipotarefa tipotarefa0,' +
+                                  'ISNULL(c.tipotarefa, '''') tipotarefa1, ISNULL(c.multiplicador, 0) multiplicador1, ISNULL(c.total_horas, 0) horas1, ' +
+                                  'ISNULL(d.tipotarefa, '''') tipotarefa2, ISNULL(d.multiplicador, 0) multiplicador2, ISNULL(d.total_horas, 0) horas2, (e.nome_abreviado + (CASE WHEN e.externo = 1 THEN '' [Externo]'' ELSE '''' END)) nome_abreviado ' +
+                                  'FROM ' +
+                                  '(SELECT idfuncionario, ano, mes, semana, dia, MIN(entrada) entrada, MAX(saida) saida, SUM(horas * multiplicador) total_horas ' +
+                                  'FROM vwassiduidade ' +
+                                  'GROUP BY idfuncionario, ano, mes, semana, dia) a ' +
+                                  'LEFT OUTER JOIN ' +
+                                  '(SELECT idfuncionario, dia, tipotarefa,SUM(horas) total_horas ' +
+                                  'FROM vwassiduidade ' +
+                                  'WHERE idtipotarefa = 0 ' +
+                                  'GROUP BY idfuncionario, dia,tipotarefa) b ON b.idfuncionario = a.idfuncionario AND b.dia = a.dia ' +
+                                  'LEFT OUTER JOIN (SELECT cc.idfuncionario, cc.dia, cc.idtipotarefa, cc.tipotarefa, cc.multiplicador, SUM(cc.horas) total_horas ' +
+                                                              'FROM vwassiduidade cc ' +
+                                                              'WHERE cc.idtipotarefa = (SELECT DISTINCT TOP 1 ccc.idtipotarefa ' +
+                                                                                                       'FROM vwassiduidade ccc ' +
+                                                                                                       'WHERE ccc.idfuncionario = cc.idfuncionario ' +
+                                                                                                       'AND ccc.dia = cc.dia ' +
+                                                                                                       'AND ccc.idtipotarefa <> 0) ' +
+                                                              'GROUP BY cc.idfuncionario, cc.dia, cc.idtipotarefa, cc.tipotarefa, cc.multiplicador) c ON c.idfuncionario = a.idfuncionario AND c.dia = a.dia ' +
+                                  'LEFT OUTER JOIN (SELECT dd.idfuncionario, dd.dia, dd.idtipotarefa, dd.tipotarefa, dd.multiplicador, SUM(dd.horas) total_horas ' +
+                                                              'FROM vwassiduidade dd ' +
+                                                              'WHERE dd.idtipotarefa = (SELECT TOP 1 dddd.idtipotarefa ' +
+                                                                                                       'FROM vwassiduidade dddd ' +
+                                                                                                       'WHERE dddd.idfuncionario = dd.idfuncionario ' +
+                                                                                                       'AND dddd.dia = dd.dia ' +
+                                                                                                       'AND dddd.idtipotarefa <> 0 ' +
+                                                                                                       'AND dddd.idtipotarefa <> (SELECT DISTINCT TOP 1 ddd.idtipotarefa ' +
+                                                                                                                                                'FROM vwassiduidade ddd ' +
+                                                                                                                                                'WHERE ddd.idfuncionario = dd.idfuncionario ' +
+                                                                                                                                                'AND ddd.dia = dd.dia ' +
+                                                                                                                                                'AND ddd.idtipotarefa <> 0)) ' +
+                                                              'GROUP BY dd.idfuncionario, dd.dia, dd.idtipotarefa, dd.tipotarefa, dd.multiplicador) d ON d.idfuncionario = a.idfuncionario AND d.dia = a.dia ' +
+                                  'INNER JOIN tb_funcionarios e ON e.idfuncionario = a.idfuncionario ' +
+                                  'WHERE SUBSTRING(a.dia, 1, 7) BETWEEN ''' + @strFiltroAnoMesInicio + ''' AND ''' + @strFiltroAnoMesFim + ''' ';
+
+       IF (@intIdFuncionario <> 0)
+       BEGIN
+              SET @strQuerySQL = @strQuerySQL + 'AND a.idfuncionario = ' + CONVERT(VARCHAR(10), @intIdFuncionario) + ' ';
+       END
+       
+       SET @strQuerySQL = @strQuerySQL + 'ORDER BY 1, 5';     
+       PRINT (@strQuerySQL);
+       EXEC (@strQuerySQL);
+END

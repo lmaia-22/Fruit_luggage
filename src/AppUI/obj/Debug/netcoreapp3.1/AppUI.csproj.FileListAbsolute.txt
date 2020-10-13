@@ -1,0 +1,15 @@
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.csprojAssemblyReference.cache
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.Form1.resources
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.csproj.GenerateResource.cache
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.AssemblyInfoInputs.cache
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.AssemblyInfo.cs
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.csproj.CoreCompileInputs.cache
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\bin\Debug\netcoreapp3.1\AppUI.exe
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\bin\Debug\netcoreapp3.1\AppUI.deps.json
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\bin\Debug\netcoreapp3.1\AppUI.runtimeconfig.json
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\bin\Debug\netcoreapp3.1\AppUI.runtimeconfig.dev.json
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\bin\Debug\netcoreapp3.1\AppUI.dll
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\bin\Debug\netcoreapp3.1\AppUI.pdb
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.dll
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.pdb
+C:\Git\Fruit_luggage\src\FruitLuggage\AppUI\obj\Debug\netcoreapp3.1\AppUI.genruntimeconfig.cache
