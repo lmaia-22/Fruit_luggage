@@ -1,7 +1,7 @@
 ﻿
 namespace AppUI
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -31,7 +31,6 @@ namespace AppUI
         {
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.closeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -53,34 +52,17 @@ namespace AppUI
             this.label1.TabIndex = 1;
             this.label1.Text = "O Luís é um homossapien .. ooo wee";
             // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.Transparent;
-            this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.closeButton.Location = new System.Drawing.Point(772, -4);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.closeButton.Size = new System.Drawing.Size(32, 27);
-            this.closeButton.TabIndex = 2;
-            this.closeButton.Text = "X";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.ControlBox = false;
-            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -92,7 +74,6 @@ namespace AppUI
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button closeButton;
     }
 }
 
