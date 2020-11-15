@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\Services",
+    "\\src\\UI"
   ],
-  "SelectedNode": "\\FruitLuggage.sln",
+  "SelectedNode": "\\src\\UI\\assets",
   "PreviewInSolutionExplorer": false
 }

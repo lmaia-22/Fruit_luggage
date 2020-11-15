@@ -20,7 +20,7 @@ namespace Domain
                     double total = 0;
                     foreach (var box in ProductBoxesOut)
                     {
-                        total += box.ProductQuantity * box.Product.Cost + box.BoxType.Cost * box.BoxQuantity;
+                        //total += box.ProductQuantity * box.Product.Cost + box.BoxType.Cost * box.BoxQuantity;
                     }
 
                     foreach (var (box, quantity) in BoxesIn)
