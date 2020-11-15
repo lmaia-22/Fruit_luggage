@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Infrastructure.Repositories
 {
-    public class BoxStorageRepository : IBoxStorageRepository
+    public class BoxStorageRepository : IBoxStorageRepository, IRepository<BoxStorage>
     {
         private readonly ApplicationContext _context;
         public BoxStorageRepository(ApplicationContext context)
@@ -34,11 +34,6 @@ namespace Infrastructure.Repositories
         public void Update(BoxStorage boxStorage)
         {
             _context.BoxStorage.Update(boxStorage);
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
         }
     }
 }

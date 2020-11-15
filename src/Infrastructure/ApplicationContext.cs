@@ -20,6 +20,7 @@ namespace Infrastructure
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductBox> ProductBoxes { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -39,6 +40,7 @@ namespace Infrastructure
             builder.Entity<Product>().HasKey(m => m.Id);
             builder.Entity<ProductBox>().HasKey(m => m.Id);
             builder.Entity<Report>().HasKey(m => m.Id);
+            builder.Entity<User>().HasKey(m => m.Id);
 
             base.OnModelCreating(builder);
         }
