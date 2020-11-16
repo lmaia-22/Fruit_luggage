@@ -13,7 +13,7 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         Title="Fruti Luggage" Height="450" Width="800">
     <Grid>
-        <Rectangle Height="250" VerticalAlignment="Top">
+        <Rectangle Height="1434"  VerticalAlignment="Top">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF2281D1"/>
@@ -23,26 +23,30 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Width="240" Height="191" VerticalAlignment="Top" Margin="280,141,280,0" RadiusY="10" RadiusX="10" Fill="White">
+        <Rectangle Width="240" Height="191" VerticalAlignment="Center" HorizontalAlignment="Center" RadiusY="10" RadiusX="10" Fill="White">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid VerticalAlignment="Top" Margin="260,114,277,0" Height="239">
-            <Label Name="Welcome" Content="Bem Vindo Sá Marques" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,36,0,0" Foreground="Gray" FontSize="18"/>
-            <StackPanel VerticalAlignment="Center" Margin="15">
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,114,277,0" Height="239">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="218*"/>
+            </Grid.ColumnDefinitions>
+            <Label Name="Welcome" Content="Bem Vindo Sá Marques" Margin="15,-33,0,71" Foreground="Gray" FontSize="18" Grid.ColumnSpan="2"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Height="219">
                 <StackPanel Margin="0,15" Orientation="Horizontal" Width="169">
                     <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="#707070"/>
-                    <TextBox Name="username_box" materialDesign:HintAssist.Hint="Utilizador" Width="166" Margin="5"/>
+                    <TextBox x:Name="username_box" materialDesign:HintAssist.Hint="Utilizador" Width="166"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Width="169">
                     <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Foreground="#707070"/>
                     <PasswordBox Name="password_box" materialDesign:HintAssist.Hint="Password" Width="175" Margin="5"/>
                 </StackPanel>
             </StackPanel>
-            <TextBlock Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
+            <TextBlock Height="20" HorizontalAlignment="Left" Margin="22,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" Grid.Column="1" />
         </Grid>
-        <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,311,0,0" Content="LOGIN"  Click="Login_button"/>
-        <Image Source="Assets/logo.png" Height="100" VerticalAlignment="Top" Margin="328,9,328,0"/>
+        <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,292,0,0" Content="LOGIN"  Click="Login_button"/>
+        <Image Source="Assets/logo.png" Height="112" VerticalAlignment="Top" Margin="328,10,328,0"/>
     </Grid>
 </Window>

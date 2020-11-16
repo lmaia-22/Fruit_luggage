@@ -27,7 +27,6 @@ namespace UI
         public Login()
         {
         
-            Welcome.Content = "Bem Vindo Sá & Marques";
             InitializeComponent();
         }
 
@@ -45,5 +44,6 @@ namespace UI
                 
             }
         }
+
     }
 }
