@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Infrastructure;
+using Services;
 using System.Windows;
+using Unity;
 
 namespace UI
 {
@@ -13,5 +10,12 @@ namespace UI
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var container = new UnityContainer();
+            //make sure your container is configured
+            container.RegisterType<IUserService, UserService>();
+            container.RegisterType<ApplicationContext>();
+        }
     }
 }

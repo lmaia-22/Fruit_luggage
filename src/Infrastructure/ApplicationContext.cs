@@ -20,6 +20,7 @@ namespace Infrastructure
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductBox> ProductBoxes { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -59,9 +59,9 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("/testeGet")]
-        public IEnumerable<BoxType> GetTest()
+        public IEnumerable<User> GetTest()
         {
-            return _context.BoxTypes;
+            return _context.Users;
         }
     }
 }
