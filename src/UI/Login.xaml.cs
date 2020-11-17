@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using Services;
 
 namespace UI
 {
@@ -23,10 +24,11 @@ namespace UI
     /// </summary>
     public partial class Login : Window
     {
+        private IUserService _userService;
 
-        public Login()
+        public Login(IUserService userService)
         {
-        
+            _userService = userService;
             InitializeComponent();
         }
 
@@ -41,7 +43,8 @@ namespace UI
             {
                 string username = username_box.Text;
                 string password = password_box.Password;
-                
+
+                _userService.ValidateLogin(username, password);
             }
         }
 

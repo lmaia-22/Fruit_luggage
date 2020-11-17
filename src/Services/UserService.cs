@@ -1,5 +1,5 @@
 ﻿using Domain;
-using Infrastructure.Repositories;
+using Infrastructure.Repositories.Interfaces;
 using Services.Requests;
 
 namespace Services

@@ -40,6 +40,7 @@ namespace Infrastructure
             builder.Entity<Product>().HasKey(m => m.Id);
             builder.Entity<ProductBox>().HasKey(m => m.Id);
             builder.Entity<Report>().HasKey(m => m.Id);
+            builder.Entity<User>().HasKey(m => m.Id);
 
             base.OnModelCreating(builder);
         }
