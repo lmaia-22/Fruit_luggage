@@ -1,6 +1,6 @@
 ﻿using Domain;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.Interfaces
 {
     public interface IDOCRepository : IRepository<DOC>
     {

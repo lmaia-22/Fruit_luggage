@@ -1,7 +1,8 @@
 ﻿using Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 using Services;
 using System.Windows;
-using Unity;
+using UI.IoC;
 
 namespace UI
 {
@@ -10,12 +11,19 @@ namespace UI
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        private readonly ServiceProvider _serviceProvider;
+
+        public App()
         {
-            var container = new UnityContainer();
-            //make sure your container is configured
-            container.RegisterType<IUserService, UserService>();
-            container.RegisterType<ApplicationContext>();
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.Resolve();
+            _serviceProvider = serviceCollection.BuildServiceProvider();
+        }
+
+        private void OnStartup(object sender, StartupEventArgs e)
+        {
+            var login = _serviceProvider.GetService<Login>();
+            login.Show();
         }
     }
 }

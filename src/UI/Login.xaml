@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="45*"/>
                 <ColumnDefinition Width="218*"/>
             </Grid.ColumnDefinitions>
-            <Label Name="Welcome" Content="Bem Vindo Sá Marques" Margin="15,-33,0,71" Foreground="Gray" FontSize="18" Grid.ColumnSpan="2"/>
+            <Label Name="Welcome" Content="Bem Vindo Sá &amp; Marques" Margin="15,-33,0,71" Foreground="Gray" FontSize="18" Grid.ColumnSpan="2"/>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Height="219">
                 <StackPanel Margin="0,15" Orientation="Horizontal" Width="169">
                     <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="#707070"/>

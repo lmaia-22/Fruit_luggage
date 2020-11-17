@@ -58,6 +58,12 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
@@ -126,13 +132,15 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Cost")
-                        .HasColumnType("REAL");
-
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("ProductFamilyId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductFamilyId");
 
                     b.ToTable("Products");
                 });
@@ -169,6 +177,23 @@ namespace Infrastructure.Migrations
                     b.ToTable("ProductBoxes");
                 });
 
+            modelBuilder.Entity("Domain.ProductFamily", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductFamily");
+                });
+
             modelBuilder.Entity("Domain.Report", b =>
                 {
                     b.Property<int>("Id")
@@ -181,6 +206,26 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Reports");
+                });
+
+            modelBuilder.Entity("Domain.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Hash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Salt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Domain.BoxStorage", b =>
@@ -199,6 +244,15 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("ClientId");
 
                     b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("Domain.Product", b =>
+                {
+                    b.HasOne("Domain.ProductFamily", "ProductFamily")
+                        .WithMany()
+                        .HasForeignKey("ProductFamilyId");
+
+                    b.Navigation("ProductFamily");
                 });
 
             modelBuilder.Entity("Domain.ProductBox", b =>
